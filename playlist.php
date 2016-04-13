@@ -40,7 +40,8 @@ if(isset($_GET['m3u'])) {
         foreach($category->streams as $stream) {
 
             if($stream->running == 1) {
-                echo "EXTINF:0 group-title=". '"' . $stream->category["name"] . '",' . $stream->name . "\r\n";
+                echo "EXTINF:0 group-title=". '"' . $stream->category["name"] . '",' . $stream->name;
+echo "#EXTM3U \r\n"
                 echo "http://" . $setting->webip . ":" . $setting->webport . "/live/" . $user->username . "/" . $user->password . "/" . $stream->id . "\r\n";
             }
         }
