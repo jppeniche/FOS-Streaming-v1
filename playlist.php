@@ -39,17 +39,16 @@ if(isset($_GET['m3u'])) {
 
     foreach($user->categories as $category) {
 
-        $print_cat=True;
-        if($print_cat) {
-           $cat = $stream->category[name];
-           echo "#EXTINF:0, ###" . $cat . "\r\n";
-           echo "http://0.0.0.0/999.ts"."\r\n";
-           $print_cat=False;                                                                
-        }
-
+           $print_cat=True;
         foreach($category->streams as $stream) {
 
-            if($stream->running == 1) {
+           if($print_cat) {
+              $cat = $stream->category[name];
+              echo "#EXTINF:0, ###" . $cat . "\r\n";
+              echo "http://0.0.0.0/999.ts"."\r\n";
+              $print_cat=False;                                                                
+           }           
+           if($stream->running == 1) {
                 echo "#EXTINF:0 group-title='" . $stream->category["name"] . "'," . $stream->name . "\r\n";
                 echo "http://" . $setting->webip . ":" . $setting->webport . "/live/" . $user->username . "/" . $user->password . "/" . $stream->id . "\r\n";
             }
