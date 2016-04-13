@@ -42,7 +42,7 @@ if(isset($_GET['m3u'])) {
         $print_cat=True;
         if($print_cat) {
            $cat = $stream->category[name];
-           echo "EXTINF:0, # " . $cat . "\r\n";
+           echo "#EXTINF:0, # " . $cat . "\r\n";
            echo "http://0.0.0.0/999.ts"."\r\n";
            $print_cat=False;                                                                
         }
