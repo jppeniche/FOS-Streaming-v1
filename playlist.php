@@ -22,8 +22,7 @@ $setting = Setting::first();
 if(isset($_GET['e2'])) {
     echo "#NAME FOS-Streaming \r\n";
     foreach($user->categories as $category) {
-        $streamo = $category->streams;
-        
+        $streamord = $category->streams;
         $streamord = $streamord->sortBy(function($post)
         {
             return $post->order;
