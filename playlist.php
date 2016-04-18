@@ -23,6 +23,7 @@ if(isset($_GET['e2'])) {
     echo "#NAME FOS-Streaming \r\n";
     foreach($user->categories as $category) {
         $streamord = $category->streams;
+        echo $streamord;
         $streamord = array_sort_by_column($streamord, 'order');
         foreach($streamord as $stream) {
             if($stream->running == 1) {
