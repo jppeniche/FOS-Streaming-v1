@@ -337,10 +337,6 @@ function generatEginxConfPort($port) {
     file_put_contents($file, $current);
 }
 
-function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
-    $sort_col = array();
-    foreach ($arr as $key=> $row) {
-        $sort_col[$key] = $row[$col];
-    }
-    return array_multisort($sort_col, $dir, $arr);
+function sortByOrder($a, $b) {
+    return $a['order'] - $b['order'];
 }
