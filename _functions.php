@@ -336,3 +336,10 @@ function generatEginxConfPort($port) {
     $current = ob_get_clean();
     file_put_contents($file, $current);
 }
+
+function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+    $sort_col = array();
+    foreach ($arr as $key=> $row) {
+        $sort_col[$key] = $row[$col];
+    }
+}
