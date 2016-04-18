@@ -337,6 +337,16 @@ function generatEginxConfPort($port) {
     file_put_contents($file, $current);
 }
 
-function sortByOrder($a, $b) {
-    return $a['order'] - $b['order'];
+function aasort (&$array, $key) {
+    $sorter=array();
+    $ret=array();
+    reset($array);
+    foreach ($array as $ii => $va) {
+        $sorter[$ii]=$va[$key];
+    }
+    asort($sorter);
+    foreach ($sorter as $ii => $va) {
+        $ret[$ii]=$array[$ii];
+    }
+    return $ret;
 }
