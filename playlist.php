@@ -22,8 +22,8 @@ $setting = Setting::first();
 if(isset($_GET['e2'])) {
     echo "#NAME FOS-Streaming \r\n";
     foreach($user->categories as $category) {
-        $streamord = $category->streams;
-        usort($streamord, 'sortByOrder');
+        $streamo = $category->streams;
+        $streamaord = asort($streamo,"order");
         foreach($streamord as $stream) {
             if($stream->running == 1) {
                 echo "#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3A//".$setting->webip."%3A".$setting->webport."/live/".$user->username."/".$user->password."/".$stream->id ."\r\n";
