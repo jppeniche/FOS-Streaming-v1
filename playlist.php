@@ -23,9 +23,12 @@ if(isset($_GET['e2'])) {
     echo "#NAME FOS-Streaming \r\n";
     foreach($user->categories as $category) {
         $streamo = $category->streams;
-        echo "#teste 123 \r\n";
-        print_r ($streamo);
-        $streamaord = aasort($streamo,"order");
+        
+        $streamord = $streamord->sortBy(function($post)
+        {
+            return $post->order;
+        });
+        
         echo "#teste 456 \r\n";
         print_r ($streamord);
         foreach($streamord as $stream) {
