@@ -2,6 +2,9 @@
 include('config.php');
 set_time_limit(0);
 error_reporting(0);
+if (isset($_SERVER['HTTP_USER_AGENT'])) {
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+}
 
 
 if (empty($_GET['username']) || empty($_GET['password'])) {
@@ -38,18 +41,14 @@ if(isset($_GET['m3u'])) {
     echo "#EXTM3U \r\n";
 
     foreach($user->categories as $category) {
-
-           $print_cat=True;
         foreach($category->streams as $stream) {
 
-           if($print_cat) {
-              $cat = $stream->category[name];
-              echo "#EXTINF:0, ###" . $cat . "\r\n";
-              echo "http://0.0.0.0/999.ts"."\r\n";
-              $print_cat=False;                                                                
-           }           
-           if($stream->running == 1) {
-                echo "#EXTINF:0 group-title='" . $stream->category["name"] . "'," . $stream->name . "\r\n";
+            if($stream->running == 1) {
+                if (strlen(strstr($agent, 'Kodi')) > 0) {	
+		        	echo "#EXTINF:0 tvg-logo=\"" . $stream->logo . "\" tvg-id=\"" . $stream->tvid . "\" ,[COLOR green]" . $stream->name . "[/COLOR]\r\n";
+                } else {
+			        echo "#EXTINF:0 group-title=\"" . $stream->category["name"] . "\" tvg-logo=\"" . $setting->logourl . "" . $stream->logo . "\" tvg-id=\"" . $stream->tvid . "\" ," . $stream->name . "\r\n";
+		        }
                 echo "http://" . $setting->webip . ":" . $setting->webport . "/live/" . $user->username . "/" . $user->password . "/" . $stream->id . "\r\n";
             }
         }
