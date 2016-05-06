@@ -44,11 +44,11 @@ if(isset($_GET['m3u'])) {
  	$print_cat=True;
         foreach($category->streams as $stream) {
   
- -      	if($print_cat) {
- -              	$cat = $stream->category[name];
- -              	echo "#EXTINF:0, ###" . $cat . "\r\n";
- -              	echo "http://0.0.0.0/999.ts"."\r\n";
- -              	$print_cat=False;                                                                
+       		if($print_cat) {
+               		$cat = $stream->category[name];
+               		echo "#EXTINF:0, ###" . $cat . "\r\n";
+               		echo "http://0.0.0.0/999.ts"."\r\n";
+               		$print_cat=False;                                                                
 	        }           
 		if($stream->running == 1) {
                 	if (strlen(strstr($agent, 'Kodi')) > 0) {	
