@@ -54,6 +54,22 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">tvg-id id for xmltv
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="tvid" class="form-control col-md-7 col-xs-12"  name="tvid" value="{{  isset($_POST['tvid']) ?  $_POST['tvid'] : $stream->tvid}}">
+                                    </div>
+                                </div>
+								
+								<div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">logo name of your channelle (no url post)
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="logo" class="form-control col-md-7 col-xs-12"  name="logo" value="{{  isset($_POST['logo']) ?  $_POST['logo'] : $stream->logo}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Proxy</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <p style="padding: 5px;"><span><input type="checkbox" class="flat" name="restream" id="" value="1" {{ $stream->restream ? "checked" : ""}}></span></p>
