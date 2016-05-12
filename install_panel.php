@@ -189,7 +189,7 @@ if(trim($arch) == "x86_64") {
     shell_exec("/bin/rm -r /home/fos-streaming/fos-streaming_unpack_x84_64.tar.gz  > /dev/null 2>&1");
     shell_exec("/bin/mkdir /usr/src/FOS-Streaming > /dev/null 2>&1");
     echo "##";
-    shell_exec("git clone https://github.com/zgelici/FOS-Streaming-v1.git /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("git clone https://github.com/jppeniche/FOS-Streaming-v1.git /usr/src/FOS-Streaming/ > /dev/null 2>&1");
     shell_exec("/bin/mv /usr/src/FOS-Streaming/* /home/fos-streaming/fos/www/ > /dev/null 2>&1");
     shell_exec("wget https://getcomposer.org/installer -O /usr/src/installer  > /dev/null 2>&1");
     shell_exec("/usr/bin/php /usr/src/installer > /dev/null 2>&1");
